@@ -463,6 +463,17 @@ footer {
     background-color: #0a0a0a;
 }
 
+/* Modal */
+.modal-content h5,
+.modal-content h6,
+.modal-content p,
+.modal-content ul,
+.modal-content li,
+.modal-content span,
+.modal-content label {
+    color: #212529 !important;
+}
+
 /* Responsive Adjustments */
 @media (max-width: 768px) {
     .hero-section {
@@ -478,14 +489,9 @@ footer {
         left: 50%;
         transform: translateX(-50%);
     }
-}
-
-/* Animations */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-.fade-in {
-    animation: fadeIn 1s ease-in;
+}    animation: fadeIn 1s ease-in;.fade-in {}    to { opacity: 1; }    from { opacity: 0; }@keyframes fadeIn {/* Animations */}
+/* Modal Fix */
+.modal-content,
+.modal-content * {
+    color: #212529 !important;
 }

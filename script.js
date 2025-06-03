@@ -196,9 +196,6 @@ projectDetailBtns.forEach(btn => {
             </div>
             
             <div class="mt-4 text-center">
-                <a href="${project.demoUrl}" class="btn btn-outline-primary me-2 ${project.demoUrl === '#' ? 'disabled' : ''}" target="_blank">
-                    <i class="fas fa-external-link-alt me-2"></i>Ver Demo
-                </a>
                 <a href="${project.codeUrl}" class="btn btn-primary" target="_blank">
                     <i class="fab fa-github me-2"></i>Código Fonte
                 </a>
