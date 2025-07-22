@@ -77,6 +77,31 @@ const projects = {
         ],
         codeUrl: "https://github.com/MatheusHeinzen/ArtDoc",
         demoUrl: "#"
+    },
+    planilhas: {
+        title: "Planilhas - Leitor de Planilhas",
+        description: "Aplicação desenvolvida em Python para leitura de planilhas e criação de gráficos.",
+        features: [
+            "Cadastro de Usuário",
+            "Cadastro de Abas para gerenciamento de planilhas",
+            "Abas personalizadas",
+            "Gráficos dinâmicos",
+            "Interface gráfica simples e intuitiva"
+        ],
+        technologies: ["Python", "Streamlit", "Pandas", "Plotly"],
+        challenges: [
+            "Gerenciar a leitura de arquivos Excel",
+            "Transformar dados em gráficos",
+            "Simplicar um projeto complexo em uma interface amigável",
+            "Persistir dados de diversas planilhas em suas abas"
+        ],
+        lessons: [
+            "Manipulação de arquivos Excel com Panda",
+            "Criação de gráficos dinâmicos com Plotly",
+            "Desenvolvimento de interfaces com Streamlit"
+        ],
+        codeUrl: "https://github.com/MatheusHeinzen/Leitor-de-Planilhas",
+        demoUrl: "#"
     }
 };
 
