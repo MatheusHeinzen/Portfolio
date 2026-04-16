@@ -102,6 +102,56 @@ const projects = {
         ],
         codeUrl: "https://github.com/MatheusHeinzen/Leitor-de-Planilhas",
         demoUrl: "#"
+    },
+    finanset: {
+        title: "Finanset - Gestão de Precatórios",
+        description: "Plataforma completa para extração, cálculo e gestão de precatórios, reduzindo o tempo de análise em até 80% e aumentando a precisão das negociações.",
+        features: [
+            "Extração de processos com atualização em tempo real",
+            "Calculadora de valuation com índices regulatórios",
+            "Dashboard com filtros avançados e exportação de dados"
+        ],
+        technologies: ["React", ".NET", "Azure", "Filas"],
+        challenges: [
+            "Garantir consistência e rastreabilidade ao longo do fluxo de extração e cálculo",
+            "Manter atualizações em tempo real com boa performance",
+            "Entregar uma experiência de uso rápida em cenários com alto volume de dados"
+        ],
+        lessons: [
+            "Boas práticas de arquitetura para sistemas orientados a eventos",
+            "Observabilidade e monitoramento em produção",
+            "Evolução incremental de funcionalidades com foco em valor de negócio"
+        ],
+        codeUrl: "#",
+        demoUrl: "https://www.finanset.com.br",
+        ctaLabel: "Ver site",
+        ctaIconClass: "fas fa-globe",
+        ctaUrl: "https://www.finanset.com.br"
+    },
+    sgsCadi: {
+        title: "SGS-CADI - Gestão Social",
+        description: "Plataforma para gestão social de uma organização social, centralizando rotinas administrativas e financeiras.",
+        features: [
+            "Gestão de matrículas",
+            "Gestão de colaboradores",
+            "Gestão financeira"
+        ],
+        technologies: ["React", "Spring Boot", "Azure"],
+        challenges: [
+            "Modelar regras de negócio de áreas diferentes (matrículas, pessoas e finanças)",
+            "Garantir segurança e controle de acesso por perfis",
+            "Padronizar integrações e validações entre módulos"
+        ],
+        lessons: [
+            "Desenho de módulos e boundaries mais claros",
+            "Validação e consistência de dados ao longo do domínio",
+            "Deploy e operação de aplicações web na nuvem"
+        ],
+        codeUrl: "#",
+        demoUrl: "https://witty-sky-0acf7c610.2.azurestaticapps.net/",
+        ctaLabel: "Ver demo",
+        ctaIconClass: "fas fa-link",
+        ctaUrl: "https://witty-sky-0acf7c610.2.azurestaticapps.net/"
     }
 };
 
@@ -165,7 +215,17 @@ projectDetailBtns.forEach(btn => {
         const project = projects[projectId];
 
         modalTitle.textContent = project.title;
-        modalCodeLink.href = project.codeUrl;
+        const ctaUrl = project.ctaUrl ?? project.codeUrl;
+        const ctaLabel = project.ctaLabel ?? "Código Fonte";
+        const ctaIconClass = project.ctaIconClass ?? "fab fa-github";
+
+        if (!ctaUrl || ctaUrl === "#") {
+            modalCodeLink.classList.add('d-none');
+        } else {
+            modalCodeLink.classList.remove('d-none');
+            modalCodeLink.href = ctaUrl;
+            modalCodeLink.innerHTML = `<i class="${ctaIconClass} me-2"></i>${ctaLabel}`;
+        }
 
         let html = `
             <div class="row">
@@ -218,12 +278,6 @@ projectDetailBtns.forEach(btn => {
         html += `
                     </ul>
                 </div>
-            </div>
-            
-            <div class="mt-4 text-center">
-                <a href="${project.codeUrl}" class="btn btn-primary" target="_blank">
-                    <i class="fab fa-github me-2"></i>Código Fonte
-                </a>
             </div>
         `;
 
