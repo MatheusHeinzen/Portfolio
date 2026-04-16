@@ -161,6 +161,29 @@ const modalTitle = document.getElementById('modalTitle');
 const modalBody = document.getElementById('modalBody');
 const modalCodeLink = document.getElementById('modalCodeLink');
 const body = document.body;
+let scrollToTopBtn;
+const isEnglish = document.documentElement.lang.toLowerCase().startsWith('en');
+const uiText = {
+    modal: {
+        description: isEnglish ? "Description" : "Descricao",
+        technologies: isEnglish ? "Technologies" : "Tecnologias",
+        challenges: isEnglish ? "Challenges" : "Desafios",
+        features: isEnglish ? "Key Features" : "Principais Funcionalidades",
+        lessons: isEnglish ? "Lessons Learned" : "Licoes Aprendidas",
+        defaultCta: isEnglish ? "Source Code" : "Codigo Fonte"
+    },
+    contact: {
+        sending: isEnglish ? "Sending..." : "Enviando...",
+        submit: isEnglish ? "Send Message" : "Enviar Mensagem",
+        success: isEnglish
+            ? "Message sent successfully! I will get back to you soon."
+            : "Mensagem enviada com sucesso! Entrarei em contato em breve.",
+        error: isEnglish
+            ? "An error occurred while sending your message. Please try again later."
+            : "Ocorreu um erro ao enviar sua mensagem. Por favor, tente novamente mais tarde."
+    },
+    scrollTop: isEnglish ? "Back to top" : "Voltar ao topo"
+};
 
 // Initialize AOS animation
 AOS.init({
@@ -201,6 +224,8 @@ if (themeToggle) {
 
 function updateThemeIcon(theme) {
     if (!themeToggle) return;
+    const darkEnabled = theme === 'dark-mode';
+    themeToggle.setAttribute('aria-pressed', String(darkEnabled));
     if (theme === 'dark-mode') {
         themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
     } else {
@@ -209,6 +234,28 @@ function updateThemeIcon(theme) {
 }
 
 // Load project details into modal
+function buildModalList(iconClass, items) {
+    const list = document.createElement('ul');
+    list.className = 'list-unstyled';
+    items.forEach((item) => {
+        const li = document.createElement('li');
+        li.className = 'mb-2';
+        const icon = document.createElement('i');
+        icon.className = `${iconClass} text-primary me-2`;
+        li.append(icon, document.createTextNode(item));
+        list.appendChild(li);
+    });
+    return list;
+}
+
+function addModalSection(container, title, contentNode, withTopMargin) {
+    const heading = document.createElement('h6');
+    heading.className = withTopMargin ? 'fw-bold mt-4' : 'fw-bold';
+    heading.textContent = title;
+    container.appendChild(heading);
+    container.appendChild(contentNode);
+}
+
 projectDetailBtns.forEach(btn => {
     btn.addEventListener('click', () => {
         const projectId = btn.getAttribute('data-project');
@@ -216,7 +263,7 @@ projectDetailBtns.forEach(btn => {
 
         modalTitle.textContent = project.title;
         const ctaUrl = project.ctaUrl ?? project.codeUrl;
-        const ctaLabel = project.ctaLabel ?? "Código Fonte";
+        const ctaLabel = project.ctaLabel ?? uiText.modal.defaultCta;
         const ctaIconClass = project.ctaIconClass ?? "fab fa-github";
 
         if (!ctaUrl || ctaUrl === "#") {
@@ -227,61 +274,32 @@ projectDetailBtns.forEach(btn => {
             modalCodeLink.innerHTML = `<i class="${ctaIconClass} me-2"></i>${ctaLabel}`;
         }
 
-        let html = `
-            <div class="row">
-                <div class="col-md-6">
-                    <h6 class="fw-bold">Descrição</h6>
-                    <p>${project.description}</p>
-                    
-                    <h6 class="fw-bold mt-4">Tecnologias</h6>
-                    <div class="mb-3">
-        `;
+        const row = document.createElement('div');
+        row.className = 'row';
+        const leftCol = document.createElement('div');
+        leftCol.className = 'col-md-6';
+        const rightCol = document.createElement('div');
+        rightCol.className = 'col-md-6';
 
-        project.technologies.forEach(tech => {
-            html += `<span class="badge bg-light text-dark me-2 mb-2">${tech}</span>`;
+        const descriptionText = document.createElement('p');
+        descriptionText.textContent = project.description;
+        addModalSection(leftCol, uiText.modal.description, descriptionText, false);
+
+        const technologiesWrap = document.createElement('div');
+        technologiesWrap.className = 'mb-3';
+        project.technologies.forEach((tech) => {
+            const badge = document.createElement('span');
+            badge.className = 'badge bg-light text-dark me-2 mb-2';
+            badge.textContent = tech;
+            technologiesWrap.appendChild(badge);
         });
+        addModalSection(leftCol, uiText.modal.technologies, technologiesWrap, true);
+        addModalSection(leftCol, uiText.modal.challenges, buildModalList('fas fa-check-circle', project.challenges), true);
+        addModalSection(rightCol, uiText.modal.features, buildModalList('fas fa-star', project.features), false);
+        addModalSection(rightCol, uiText.modal.lessons, buildModalList('fas fa-lightbulb', project.lessons), true);
 
-        html += `
-                    </div>
-                    
-                    <h6 class="fw-bold mt-4">Desafios</h6>
-                    <ul class="list-unstyled">
-        `;
-
-        project.challenges.forEach(challenge => {
-            html += `<li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i>${challenge}</li>`;
-        });
-
-        html += `
-                    </ul>
-                </div>
-                <div class="col-md-6">
-                    <h6 class="fw-bold">Principais Funcionalidades</h6>
-                    <ul class="list-unstyled">
-        `;
-
-        project.features.forEach(feature => {
-            html += `<li class="mb-2"><i class="fas fa-star text-primary me-2"></i>${feature}</li>`;
-        });
-
-        html += `
-                    </ul>
-                    
-                    <h6 class="fw-bold mt-4">Lições Aprendidas</h6>
-                    <ul class="list-unstyled">
-        `;
-
-        project.lessons.forEach(lesson => {
-            html += `<li class="mb-2"><i class="fas fa-lightbulb text-primary me-2"></i>${lesson}</li>`;
-        });
-
-        html += `
-                    </ul>
-                </div>
-            </div>
-        `;
-
-        modalBody.innerHTML = html;
+        row.append(leftCol, rightCol);
+        modalBody.replaceChildren(row);
         projectModal.show();
     });
 });
@@ -313,14 +331,14 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // Navbar active link on scroll
 const sections = document.querySelectorAll('section');
 const navItems = document.querySelectorAll('.nav-link');
+let ticking = false;
 
-window.addEventListener('scroll', () => {
+function handleScroll() {
     let current = '';
-    
+
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        
+
         if (window.pageYOffset >= (sectionTop - 150)) {
             current = section.getAttribute('id');
         }
@@ -332,16 +350,48 @@ window.addEventListener('scroll', () => {
             item.classList.add('active');
         }
     });
+
+    if (scrollToTopBtn) {
+        scrollToTopBtn.style.display = window.pageYOffset > 300 ? 'block' : 'none';
+    }
+    ticking = false;
+}
+
+window.addEventListener('scroll', () => {
+    if (!ticking) {
+        window.requestAnimationFrame(handleScroll);
+        ticking = true;
+    }
 });
 
 // Contact form submission
 const contactForm = document.getElementById('contactForm');
+const contactSubmitBtn = document.getElementById('contactSubmitBtn');
+let isSubmitting = false;
+if (typeof emailjs !== 'undefined') {
+    emailjs.init('ogAQD7bIuXmYZ7fdj');
+}
+
+function showFormAlert(type, message) {
+    const alert = document.createElement('div');
+    alert.className = `alert alert-${type} mt-3`;
+    const iconClass = type === 'success' ? 'fas fa-check-circle' : 'fas fa-exclamation-circle';
+    alert.innerHTML = `<i class="${iconClass} me-2"></i>${message}`;
+    contactForm.appendChild(alert);
+    setTimeout(() => {
+        alert.remove();
+    }, 5000);
+}
+
 if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
-        
-        // Initialize EmailJS
-        emailjs.init('ogAQD7bIuXmYZ7fdj'); // Substitua pelo seu User ID do EmailJS
+        if (isSubmitting || typeof emailjs === 'undefined') return;
+        isSubmitting = true;
+        if (contactSubmitBtn) {
+            contactSubmitBtn.disabled = true;
+            contactSubmitBtn.textContent = uiText.contact.sending;
+        }
         
         // Get form data
         const formData = {
@@ -354,51 +404,27 @@ if (contactForm) {
         // Send email
         emailjs.send('service_qdgmsjy', 'template_0dqgbb3', formData) // Substitua pelos seus IDs
             .then(() => {
-                // Show success message
-                const alert = document.createElement('div');
-                alert.className = 'alert alert-success mt-3';
-                alert.innerHTML = `
-                    <i class="fas fa-check-circle me-2"></i>
-                    Mensagem enviada com sucesso! Entrarei em contato em breve.
-                `;
-                contactForm.appendChild(alert);
-                
-                // Reset form
+                showFormAlert('success', uiText.contact.success);
                 contactForm.reset();
-                
-                // Remove alert after 5 seconds
-                setTimeout(() => {
-                    alert.remove();
-                }, 5000);
             }, (error) => {
-                // Show error message
-                const alert = document.createElement('div');
-                alert.className = 'alert alert-danger mt-3';
-                alert.innerHTML = `
-                    <i class="fas fa-exclamation-circle me-2"></i>
-                    Ocorreu um erro ao enviar sua mensagem. Por favor, tente novamente mais tarde.
-                `;
-                contactForm.appendChild(alert);
-                
+                showFormAlert('danger', uiText.contact.error);
                 console.error('EmailJS Error:', error);
+            }).finally(() => {
+                isSubmitting = false;
+                if (contactSubmitBtn) {
+                    contactSubmitBtn.disabled = false;
+                    contactSubmitBtn.textContent = uiText.contact.submit;
+                }
             });
     });
 }
 
 // Scroll to top button
-const scrollToTopBtn = document.createElement('button');
+scrollToTopBtn = document.createElement('button');
 scrollToTopBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
 scrollToTopBtn.className = 'btn btn-primary scroll-to-top';
-scrollToTopBtn.title = 'Voltar ao topo';
+scrollToTopBtn.title = uiText.scrollTop;
 document.body.appendChild(scrollToTopBtn);
-
-window.addEventListener('scroll', () => {
-    if (window.pageYOffset > 300) {
-        scrollToTopBtn.style.display = 'block';
-    } else {
-        scrollToTopBtn.style.display = 'none';
-    }
-});
 
 scrollToTopBtn.addEventListener('click', () => {
     window.scrollTo({
@@ -474,3 +500,5 @@ window.addEventListener('load', () => {
         }, 500);
     }
 });
+
+handleScroll();

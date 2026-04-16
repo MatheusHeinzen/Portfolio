@@ -3,8 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfólio de Matheus Heinzen, estudante de Sistemas de Informação e desenvolvedor Backend">
+    <meta name="description" content="Portfólio de Matheus Heinzen, desenvolvedor full stack júnior com foco em backend, APIs e automação de processos.">
     <meta name="keywords" content="desenvolvedor, backend, python, flask, java, portfolio">
+    <meta name="author" content="Matheus Heinzen">
+    <link rel="canonical" href="https://matheusheinzen.github.io/Portifolio/">
+    <link rel="alternate" hreflang="pt-BR" href="https://matheusheinzen.github.io/Portifolio/">
+    <link rel="alternate" hreflang="en" href="https://matheusheinzen.github.io/Portifolio/index-en.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Matheus Heinzen | Desenvolvedor Full Stack Júnior">
+    <meta property="og:description" content="Projetos reais com foco em backend, performance e valor de negócio.">
+    <meta property="og:url" content="https://matheusheinzen.github.io/Portifolio/">
+    <meta property="og:image" content="https://matheusheinzen.github.io/Portifolio/assets/header.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Matheus Heinzen | Desenvolvedor Full Stack Júnior">
+    <meta name="twitter:description" content="Portfólio com cases e resultados em projetos web.">
     <title>Matheus Heinzen | Desenvolvedor Backend</title>
     
     <!-- Favicon -->
@@ -23,8 +35,23 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <link rel="stylesheet" href="style.css">
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Matheus Heinzen",
+            "jobTitle": "Desenvolvedor Full Stack Júnior",
+            "url": "https://matheusheinzen.github.io/Portifolio/",
+            "sameAs": [
+                "https://github.com/MatheusHeinzen",
+                "https://linkedin.com/in/matheus-heinzen"
+            ],
+            "knowsAbout": ["Python", "Java", ".NET", "React", "Azure", "APIs REST"]
+        }
+    </script>
 </head>
 <body>
+    <a class="visually-hidden-focusable position-absolute top-0 start-0 p-3 bg-dark text-white" href="#mainContent">Pular para o conteúdo principal</a>
     <!-- Navbar -->
     <nav id="navbar" class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
@@ -52,9 +79,9 @@
                         <a class="nav-link" href="#contact">Contato</a>
                     </li>
                     <li class="nav-item ms-2">
-                        <span id="themeToggle" class="theme-toggle btn btn-sm btn-outline-secondary">
+                        <button id="themeToggle" type="button" class="theme-toggle btn btn-sm btn-outline-secondary" aria-label="Alternar tema" aria-pressed="false">
                             <i class="fas fa-moon"></i>
-                        </span>
+                        </button>
                     </li>
                     <li class="nav-item ms-2">
                         <a href="index-en.html" class="btn btn-sm btn-outline-light">EN</a>
@@ -64,26 +91,28 @@
         </div>
     </nav>
 
+    <main id="mainContent">
     <!-- Hero Section -->
     <section id="home" class="hero-section">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6" data-aos="fade-right">
-                    <h1 class="display-4 fw-bold mb-4">Olá, eu sou <span class="text-primary">Matheus Heinzen</span></h1>
-                    <p class="lead mb-4">Estudante de Sistemas de Informação e desenvolvedor Backend em formação</p>
+                    <h1 class="display-4 fw-bold mb-4">Desenvolvo soluções web que <span class="text-primary">aceleram operações e melhoram decisões</span></h1>
+                    <p class="lead mb-4">Sou Matheus Heinzen, desenvolvedor full stack júnior com foco em backend, APIs e automação. Atuo em projetos reais com React, .NET, Java e Azure.</p>
                     <div class="d-flex gap-3 mb-4">
-                        <a href="#projects" class="btn btn-primary btn-lg px-4">Ver Projetos</a>
-                        <a href="#contact" class="btn btn-outline-secondary btn-lg px-4">Contato</a>
+                        <a href="#projects" class="btn btn-primary btn-lg px-4">Ver case principal</a>
+                        <a href="#contact" class="btn btn-outline-secondary btn-lg px-4">Agendar conversa</a>
+                        <a href="assets/cv.pdf" class="btn btn-outline-primary btn-lg px-4" download>Baixar CV</a>
                     </div>
                     <div class="d-flex gap-3 flex-wrap">
-                        <span class="badge f1-badge">
-                            <i class="fas fa-flag-checkered"></i> Fórmula 1
+                        <span class="badge bg-dark">
+                            <i class="fas fa-briefcase"></i> Disponível para novas oportunidades
                         </span>
-                        <span class="badge game-badge">
-                            <i class="fas fa-gamepad"></i> Jogos
+                        <span class="badge bg-primary">
+                            <i class="fas fa-code-branch"></i> Backend e APIs
                         </span>
-                        <span class="badge literature-badge">
-                            <i class="fas fa-book"></i> Mitologia
+                        <span class="badge bg-success">
+                            <i class="fas fa-rocket"></i> Entrega orientada a resultado
                         </span>
                     </div>
                 </div>
@@ -110,115 +139,16 @@
             </div>
             
             <div class="row g-4">
-                <!-- Projeto FreeLa -->
+                <!-- Projeto Finanset -->
                 <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
                     <div class="project-card card h-100">
                         <div class="card-img-top position-relative">
-                            <img src="assets/freela-project.png" class="img-fluid" alt="FreeLa" style="height: 300px; width: 100%;">
-                            <div class="badge bg-primary position-absolute top-0 end-0 m-3">Aplicação Web</div>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">FreeLa</h5>
-                            <p class="card-text">Plataforma de freelancers com foco em projetos de programação.</p>
-                            <div class="mb-3">
-                                <span class="badge skill-badge">Python</span>
-                                <span class="badge skill-badge">Flask</span>
-                                <span class="badge skill-badge">MySQL</span>
-                            </div>
-                            <div class="d-flex justify-content-between">
-                                <button class="btn btn-sm btn-outline-primary project-detail-btn" data-project="freela">Detalhes</button>
-                                <a href="https://github.com/MatheusHeinzen/Free-La" target="_blank" class="btn btn-sm btn-primary">
-                                    <i class="fas fa-code"></i> Código
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Projeto Mood -->
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="project-card card h-100">
-                        <div class="card-img-top position-relative">
-                            <img src="assets/react-project.png" class="img-fluid" alt="Projeto React" style="height: 300px; width: 100%;">
-                            <div class="badge bg-primary position-absolute top-0 end-0 m-3">Frontend</div>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Mood Daily</h5>
-                            <p class="card-text">Projeto frontend utilizando React com uso de API para previsão do tempo.</p>
-                            <div class="mb-3">
-                                <span class="badge skill-badge">React</span>
-                                <span class="badge skill-badge">JavaScript</span>
-                                <span class="badge skill-badge">CSS</span>
-                            </div>
-                            <div class="d-flex justify-content-between">
-                                <button class="btn btn-sm btn-outline-primary project-detail-btn" data-project="react">Detalhes</button>
-                                <a href="https://github.com/MatheusHeinzen/Mood-Daily" target="_blank" class="btn btn-sm btn-primary">
-                                    <i class="fas fa-code"></i> Código
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Projeto ArtDoc -->
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="project-card card h-100">
-                        <div class="card-img-top position-relative">
-                            <img src="assets/java-project.png" class="img-fluid" alt="Projeto Java" style="height: 300px; width: 100%;">
-                            <div class="badge bg-primary position-absolute top-0 end-0 m-3">Backend</div>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">ArtDoc</h5>
-                            <p class="card-text">Aplicação backend desenvolvida em Java para gestão de artes.</p>
-                            <div class="mb-3">
-                                <span class="badge skill-badge">Java</span>
-                                <span class="badge skill-badge">Swing</span>
-                            </div>
-                            <div class="d-flex justify-content-between">
-                                <button class="btn btn-sm btn-outline-primary project-detail-btn" data-project="java">Detalhes</button>
-                                <a href="https://github.com/MatheusHeinzen/ArtDoc" target="_blank" class="btn btn-sm btn-primary">
-                                    <i class="fas fa-code"></i> Código
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Projeto Planilhas -->
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="project-card card h-100">
-                        <div class="card-img-top position-relative">
-                            <img src="assets/leitor.png" class="img-fluid" alt="Projeto Java" style="height: 300px; width: 100%;">
-                            <div class="badge bg-success position-absolute top-0 end-0 m-3">Backend</div>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Leitor de Planilhas</h5>
-                            <p class="card-text">Aplicação desenvolvida em em Python para leitura de planilhas e criação de gráficos.</p>
-                            <div class="mb-3">
-                                <span class="badge skill-badge">Streamlit</span>
-                                <span class="badge skill-badge">Python/Pandas</span>
-                                <span class="badge skill-badge">SQlite</span>
-                            </div>
-                            <div class="d-flex justify-content-between">
-                                <button class="btn btn-sm btn-outline-primary project-detail-btn" data-project="planilhas">Detalhes</button>
-                                <a href="https://github.com/MatheusHeinzen/Leitor-de-Planilhas" target="_blank" class="btn btn-sm btn-primary">
-                                    <i class="fas fa-code"></i> Código
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Projeto Finanset -->
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
-                    <div class="project-card card h-100">
-                        <div class="card-img-top position-relative">
-                            <img src="assets/finanset.png" class="img-fluid" alt="Finanset" style="height: 300px; width: 100%;">
+                            <img src="assets/finanset.png" class="img-fluid" alt="Projeto Finanset" style="height: 300px; width: 100%;" loading="lazy">
                             <div class="badge bg-primary position-absolute top-0 end-0 m-3">Aplicação Web</div>
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">Finanset</h5>
-                            <p class="card-text">Plataforma para extração, cálculo e gestão de precatórios, reduzindo o tempo de análise em até 80%.</p>
+                            <p class="card-text">Case principal: plataforma para extração e cálculo de precatórios com redução de até 80% no tempo de análise.</p>
                             <div class="mb-3">
                                 <span class="badge skill-badge">React</span>
                                 <span class="badge skill-badge">.NET</span>
@@ -236,15 +166,15 @@
                 </div>
 
                 <!-- Projeto SGS-CADI -->
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="project-card card h-100">
                         <div class="card-img-top position-relative">
-                            <img src="assets/sgs-cadi.png" class="img-fluid" alt="SGS-CADI" style="height: 300px; width: 100%;">
+                            <img src="assets/sgs-cadi.png" class="img-fluid" alt="Projeto SGS-CADI" style="height: 300px; width: 100%;" loading="lazy">
                             <div class="badge bg-primary position-absolute top-0 end-0 m-3">Projeto Social</div>
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">SGS-CADI</h5>
-                            <p class="card-text">Plataforma em desenvolvimento para gestão social de uma organização social, com módulos administrativos e financeiros.</p>
+                            <p class="card-text">Plataforma social em desenvolvimento com módulos administrativos e financeiros para apoiar gestão de organização social.</p>
                             <div class="mb-3">
                                 <span class="badge skill-badge">React</span>
                                 <span class="badge skill-badge">Spring Boot</span>
@@ -259,10 +189,109 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Projeto FreeLa -->
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="project-card card h-100">
+                        <div class="card-img-top position-relative">
+                            <img src="assets/freela-project.png" class="img-fluid" alt="FreeLa" style="height: 300px; width: 100%;">
+                            <div class="badge bg-primary position-absolute top-0 end-0 m-3">Aplicação Web</div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">FreeLa</h5>
+                            <p class="card-text">Case em andamento para conectar freelancers e clientes com foco em fluxo de contratação e reputação.</p>
+                            <div class="mb-3">
+                                <span class="badge skill-badge">Python</span>
+                                <span class="badge skill-badge">Flask</span>
+                                <span class="badge skill-badge">MySQL</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <button class="btn btn-sm btn-outline-primary project-detail-btn" data-project="freela">Detalhes</button>
+                                <a href="https://github.com/MatheusHeinzen/Free-La" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
+                                    <i class="fas fa-code"></i> Código
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projeto Planilhas -->
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="project-card card h-100">
+                        <div class="card-img-top position-relative">
+                            <img src="assets/leitor.png" class="img-fluid" alt="Projeto leitor de planilhas" style="height: 300px; width: 100%;" loading="lazy">
+                            <div class="badge bg-success position-absolute top-0 end-0 m-3">Backend</div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Leitor de Planilhas</h5>
+                            <p class="card-text">Aplicação desenvolvida em em Python para leitura de planilhas e criação de gráficos.</p>
+                            <div class="mb-3">
+                                <span class="badge skill-badge">Streamlit</span>
+                                <span class="badge skill-badge">Python/Pandas</span>
+                                <span class="badge skill-badge">SQlite</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <button class="btn btn-sm btn-outline-primary project-detail-btn" data-project="planilhas">Detalhes</button>
+                                <a href="https://github.com/MatheusHeinzen/Leitor-de-Planilhas" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
+                                    <i class="fas fa-code"></i> Código
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projeto Mood -->
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="project-card card h-100">
+                        <div class="card-img-top position-relative">
+                            <img src="assets/react-project.png" class="img-fluid" alt="Projeto React" style="height: 300px; width: 100%;">
+                            <div class="badge bg-primary position-absolute top-0 end-0 m-3">Frontend</div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Mood Daily</h5>
+                            <p class="card-text">Projeto de frontend com React e API externa, com foco em UX responsiva e componentes reutilizáveis.</p>
+                            <div class="mb-3">
+                                <span class="badge skill-badge">React</span>
+                                <span class="badge skill-badge">JavaScript</span>
+                                <span class="badge skill-badge">CSS</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <button class="btn btn-sm btn-outline-primary project-detail-btn" data-project="react">Detalhes</button>
+                                <a href="https://github.com/MatheusHeinzen/Mood-Daily" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
+                                    <i class="fas fa-code"></i> Código
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projeto ArtDoc -->
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="600">
+                    <div class="project-card card h-100">
+                        <div class="card-img-top position-relative">
+                            <img src="assets/java-project.png" class="img-fluid" alt="Projeto Java" style="height: 300px; width: 100%;">
+                            <div class="badge bg-primary position-absolute top-0 end-0 m-3">Backend</div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">ArtDoc</h5>
+                            <p class="card-text">Projeto backend em Java com foco em organização de dados, arquitetura e manutenção do sistema.</p>
+                            <div class="mb-3">
+                                <span class="badge skill-badge">Java</span>
+                                <span class="badge skill-badge">Swing</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <button class="btn btn-sm btn-outline-primary project-detail-btn" data-project="java">Detalhes</button>
+                                <a href="https://github.com/MatheusHeinzen/ArtDoc" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
+                                    <i class="fas fa-code"></i> Código
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             
             <div class="text-center mt-5" data-aos="fade-up">
-                <a href="https://github.com/MatheusHeinzen?tab=repositories" target="_blank" class="btn btn-outline-primary">
+                <a href="https://github.com/MatheusHeinzen?tab=repositories" target="_blank" rel="noopener noreferrer" class="btn btn-outline-primary">
                     <i class="fab fa-github me-2"></i>Ver todos no GitHub
                 </a>
             </div>
@@ -297,7 +326,7 @@
                         <i class="fas fa-server tech-icon mb-3"></i>
                         <h4>Backend</h4>
                         <div class="mt-3">
-                            <span class="badge skill-badge">Python</span>
+                            <span class="badge skill-badge">.Net</span>
                             <span class="badge skill-badge">Flask</span>
                             <span class="badge skill-badge">Java</span>
                             <span class="badge skill-badge">MySQL</span>
@@ -314,7 +343,7 @@
                             <span class="badge skill-badge">Git</span>
                             <span class="badge skill-badge">GitHub</span>
                             <span class="badge skill-badge">Linux</span>
-                            <span class="badge skill-badge">AWS</span>
+                            <span class="badge skill-badge">Azure</span>
                             <span class="badge skill-badge">Docker</span>
                         </div>
                     </div>
@@ -345,19 +374,22 @@
             <div class="row align-items-center">
                 <div class="col-lg-6 mb-4" data-aos="fade-right">
                     <div class="about-image-container">
-                        <img src="assets/about.jpeg" alt="Matheus Heinzen" class="img-fluid rounded shadow">
+                        <img src="assets/about.jpeg" alt="Matheus Heinzen" class="img-fluid rounded shadow" loading="lazy">
                     </div>
                 </div>
                 <div class="col-lg-6" data-aos="fade-left">
                     <h2 class="fw-bold mb-4 section-title" id="aboutTitle">Sobre Mim</h2>
                     <div class="divider-left"></div>
-                    <p class="lead">Estudante de Sistemas de Informação com foco em desenvolvimento Backend.</p>
-                    <p>Tenho 19 anos e estou no mundo da programação há 3-4 anos. Atualmente estou no quinto semestre do Bacharelado em Sistemas de Informação (BSI).</p>
-                    <p>Meu foco atual de aprendizagem está em <strong>.NET</strong>, <strong>Azure</strong> e <strong>Inteligência Artificial</strong>, áreas que me fascinam e onde quero me especializar.</p>
-                    <p>Além da programação, sou apaixonado por Fórmula 1, jogos e mitologia - temas que me inspiram e trazem equilíbrio para minha vida.</p>
+                    <p class="lead">Desenvolvedor full stack júnior com foco em backend e construção de produtos digitais úteis.</p>
+                    <p>Atualmente atuo profissionalmente como desenvolvedor e também curso Sistemas de Informação. Busco uma oportunidade com mais desafio técnico, autonomia e aprendizado acelerado.</p>
+                    <p>Meu foco atual está em <strong>.NET</strong>, <strong>Azure</strong> e <strong>Inteligência Artificial</strong>, sempre conectando decisões técnicas a impacto no negócio.</p>
+                    <p>Valorizo código limpo, colaboração e entregas consistentes do discovery ao deploy.</p>
                     
                     <div class="mt-4">
-                        <a href="https://linkedin.com/in/matheus-heinzen" target="_blank" class="btn btn-outline-secondary">
+                        <a href="assets/cv.pdf" class="btn btn-primary me-2" download>
+                            <i class="fas fa-download me-2"></i> Baixar CV
+                        </a>
+                        <a href="https://linkedin.com/in/matheus-heinzen" target="_blank" rel="noopener noreferrer" class="btn btn-outline-secondary">
                             <i class="fab fa-linkedin me-2"></i> LinkedIn
                         </a>
                     </div>
@@ -372,7 +404,7 @@
             <div class="text-center mb-5" data-aos="fade-up">
                 <h2 class="fw-bold section-title">Entre em Contato</h2>
                 <div class="divider"></div>
-                <p class="text-muted">Estou aberto a oportunidades de estágio e colaborações</p>
+                <p class="text-muted">Aberto para oportunidades full stack júnior, freelas técnicos e projetos com impacto real</p>
             </div>
             
             <div class="row justify-content-center">
@@ -397,7 +429,7 @@
                             <textarea class="form-control" id="message" rows="5" required></textarea>
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+                            <button type="submit" class="btn btn-primary" id="contactSubmitBtn">Enviar Mensagem</button>
                         </div>
                     </form>
                 </div>
@@ -406,19 +438,20 @@
             <div class="text-center mt-5" data-aos="fade-up">
                 <h4 class="mb-4">Ou me encontre nas redes sociais</h4>
                 <div class="d-flex justify-content-center gap-4">
-                    <a href="https://github.com/MatheusHeinzen" target="_blank" class="social-icon">
+                    <a href="https://github.com/MatheusHeinzen" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="GitHub de Matheus Heinzen">
                         <i class="fab fa-github fa-2x"></i>
                     </a>
-                    <a href="https://linkedin.com/in/matheus-heinzen" target="_blank" class="social-icon">
+                    <a href="https://linkedin.com/in/matheus-heinzen" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="LinkedIn de Matheus Heinzen">
                         <i class="fab fa-linkedin fa-2x"></i>
                     </a>
-                    <a href="mailto:matheusheinzen7@gmail.com" class="social-icon">
+                    <a href="mailto:matheusheinzen7@gmail.com" class="social-icon" aria-label="Enviar e-mail para Matheus Heinzen">
                         <i class="fas fa-envelope fa-2x"></i>
                     </a>
                 </div>
             </div>
         </div>
     </section>
+    </main>
 
     <!-- Footer -->
     <footer class="py-5">
@@ -444,7 +477,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                    <a href="#" id="modalCodeLink" class="btn btn-primary" target="_blank">
+                    <a href="#" id="modalCodeLink" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
                         <i class="fas fa-code me-2"></i>Ver Código
                     </a>
                 </div>
